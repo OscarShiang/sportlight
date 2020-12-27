@@ -118,7 +118,7 @@ public class Create extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setClass(Create.this, Menu.class);
                     setResult(RESULT_OK, intent);
-                    startActivityForResult(intent, 8080);
+                    finish();
                 }
             }
         });

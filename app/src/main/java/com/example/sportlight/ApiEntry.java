@@ -1,5 +1,6 @@
 package com.example.sportlight;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,13 +13,16 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class ApiEntry {
     final private String baseURL = "https://sportlight-backend.herokuapp.com/api";
 
-    private Boolean isLogin;
+    static private Boolean isLogin;
+
     static private String username;
+    static private int uID;
 
     public ApiEntry(){
         isLogin = false;
@@ -69,10 +73,21 @@ public class ApiEntry {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
-            System.out.println(response.toString());
-            Boolean ret = Boolean.parseBoolean(response.toString());
-            return ret;
+        }
+
+        try {
+            JSONObject res_data = new JSONObject(response.toString());
+            boolean status = (boolean) res_data.get("status");
+            if (status) {
+                JSONObject info = (JSONObject) res_data.get("info");
+
+                username = (String) info.get("user");
+                uID = (int) info.get("id");
+            }
+            return status;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -117,12 +132,61 @@ public class ApiEntry {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
-            isLogin = Boolean.parseBoolean(response.toString());
-            if (isLogin)
-                username = user;
-            return isLogin;
         }
+
+
+        if (response.toString().equals("")) {
+            return false;
+        } else {
+            try {
+                JSONObject res_data = new JSONObject(response.toString());
+                uID = (int) res_data.get("id");
+                username = (String) res_data.get("user");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public JSONArray getEvents() {
+        StringBuilder response = new StringBuilder();
+        JSONObject ret = null;
+
+        try {
+            URL url = new URL(baseURL + "/event");
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoInput(true);
+            conn.setRequestMethod("GET");
+
+            InputStream ipt = conn.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ipt));
+
+            String line;
+            while((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+            reader.close();
+            conn.disconnect();
+
+            ret = new JSONObject(response.toString());
+
+            return ret.getJSONArray("events");
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return new JSONArray();
     }
 
     public Boolean createEvent(String sport, String start_at) {
@@ -159,6 +223,50 @@ public class ApiEntry {
             conn.disconnect();
 
         } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            Boolean ret = Boolean.parseBoolean(response.toString());
+            return ret;
+        }
+    }
+
+    public boolean joinEvent(int event_id) {
+        StringBuilder response = new StringBuilder();
+        try {
+            URL url = new URL(baseURL + "/event/join");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type","application/json; charset=UTF-8");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+
+            OutputStream out = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+
+            JSONObject body = new JSONObject();
+            body.put("event_id", event_id);
+            body.put("user_id", uID);
+
+            writer.write(body.toString());
+            writer.flush();
+            writer.close();
+
+            InputStream ipt = conn.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ipt));
+
+            String line;
+            while((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

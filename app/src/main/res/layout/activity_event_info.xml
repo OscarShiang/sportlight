@@ -17,6 +17,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/sportText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h05"
@@ -35,6 +36,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h25"
@@ -53,6 +55,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h45"
@@ -71,6 +74,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/locText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h65"
@@ -89,6 +93,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/partiText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h85"
