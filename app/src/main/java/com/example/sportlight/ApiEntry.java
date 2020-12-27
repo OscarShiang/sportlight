@@ -347,6 +347,9 @@ public class ApiEntry {
                 response.append(line);
             }
 
+            reader.close();
+            conn.disconnect();
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {

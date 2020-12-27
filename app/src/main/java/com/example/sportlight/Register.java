@@ -78,12 +78,17 @@ public class Register extends AppCompatActivity {
 
                 try {
                     action.join();
-                    Toast.makeText(Register.this, "The result " + ret[0], Toast.LENGTH_SHORT).show();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                // TODO: enter question activity and finish the questionnaire
+                if (!ret[0]) {
+                    Toast.makeText(Register.this, "此帳號已存在", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Toast.makeText(Register.this, "註冊成功", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent();
                 intent.setClass(Register.this, Question.class);
                 startActivityForResult(intent, 8000);
