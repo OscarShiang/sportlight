@@ -10,13 +10,7 @@ public class SportEvent implements Serializable {
     private String founder;
     private String sport;
     private String start_at;
-
-    public SportEvent(int uID, String founder, String sport, String start_at) {
-        this.uID = uID;
-        this.founder = founder;
-        this.sport = sport;
-        this.start_at = start_at;
-    }
+    private String participant;
 
     public SportEvent(JSONObject obj) {
         this.fromJSON(obj);
@@ -28,6 +22,7 @@ public class SportEvent implements Serializable {
             founder = (String) data.get("founder");
             sport = (String) data.get("sport");
             start_at = (String) data.get("start_at");
+            participant = (String) data.get("participant");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -51,5 +46,9 @@ public class SportEvent implements Serializable {
 
     public String getStartAt() {
         return start_at;
+    }
+
+    public String getParticipant() {
+        return participant;
     }
 }

@@ -49,7 +49,31 @@ public class EventInfo extends AppCompatActivity {
         date.setText(start_at[0]);
         time.setText(start_at[1]);
 
+        final String[] partiShowText = new String[1];
+        partiShowText[0] = "";
 
+        String[] userIDs = info.getParticipant().split(",");
+        Thread action = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < userIDs.length; i++) {
+                    if (userIDs[i].equals(""))
+                        continue;
+
+                    if (i > 0)
+                        partiShowText[0] += ", ";
+                    partiShowText[0] += apiEntry.getUsername(Integer.parseInt(userIDs[i]));
+                }
+            }
+        });
+        action.start();
+        try {
+            action.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        participants.setText(partiShowText[0]);
     }
 
     private void setClickEvents() {
@@ -81,6 +105,7 @@ public class EventInfo extends AppCompatActivity {
 
                 if (ret[0]) {
                     finish();
+                    Toast.makeText(EventInfo.this, "Operation completed", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EventInfo.this, "Operation failed", Toast.LENGTH_SHORT).show();
                 }

@@ -278,4 +278,86 @@ public class ApiEntry {
         }
     }
 
+    public String getUsername(int user_id) {
+        StringBuilder response = new StringBuilder();
+        try {
+            URL url = new URL(baseURL + "/account/" + user_id);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            conn.setDoOutput(false);
+
+            InputStream ipt = conn.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ipt));
+
+            String line;
+            while((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JSONObject ret = new JSONObject(response.toString());
+            return (String) ret.get("user");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public boolean setCGAResult(int height, int weight, boolean abnormal_weight, int exercise_kind, boolean fall_down) {
+        StringBuilder response = new StringBuilder();
+        try {
+            URL url = new URL(baseURL + "/cga");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type","application/json; charset=UTF-8");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+
+            OutputStream out = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+
+            JSONObject body = new JSONObject();
+            body.put("id", uID);
+            body.put("height", height);
+            body.put("weight", weight);
+            body.put("abnormal_weight", abnormal_weight);
+            body.put("exercise", exercise_kind);
+            body.put("fall_down", fall_down);
+
+            writer.write(body.toString());
+            writer.flush();
+            writer.close();
+
+            InputStream ipt = conn.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ipt));
+
+            String line;
+            while((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            Boolean ret = Boolean.parseBoolean(response.toString());
+            return ret;
+        }
+    }
 }
