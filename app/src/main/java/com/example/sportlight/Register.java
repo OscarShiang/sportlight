@@ -83,6 +83,8 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (!ret[0]) {
+                    usrEdit.setText("");
+                    pwdEdit.setText("");
                     Toast.makeText(Register.this, "此帳號已存在", Toast.LENGTH_SHORT).show();
                     return;
                 }

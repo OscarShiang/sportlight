@@ -74,9 +74,9 @@
 
         <ImageView
             android:id="@+id/titleIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/hacker" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/icon" />
 
         <TextView
             android:id="@+id/titleText"

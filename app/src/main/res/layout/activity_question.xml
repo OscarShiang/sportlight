@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="周全性評估"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@id/h10"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@id/h15"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:text="Q1:請輸入你的身高和體重。"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,36 +52,42 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="right"
+                        android:textSize="20sp"
                         android:text="身高"/>
                     <EditText
                         android:id="@+id/height"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="20sp"/>
                     <TextView
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="left"
+                        android:textSize="20sp"
                         android:text="cm"/>
                     <TextView
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="right"
+                        android:textSize="20sp"
                         android:text="體重"/>
                     <EditText
                         android:id="@+id/weight"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="20sp"/>
                     <TextView
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="left"
+                        android:textSize="20sp"
                         android:text="kg"/>
                 </LinearLayout>
             </LinearLayout>
@@ -95,6 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:text="Q2:過去一年體重是否有不正常減輕(> 3 kg)的情形？"/>
                 <RadioGroup
                     android:id="@+id/abnormal_weight"
@@ -105,11 +113,13 @@
                         android:id="@+id/q2_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="是"/>
                     <RadioButton
                         android:id="@+id/q2_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="否"/>
                 </RadioGroup>
             </LinearLayout>
@@ -124,6 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:text="Q3:每周的運動時數？"/>
                 <RadioGroup
                     android:id="@+id/exercise_kind"
@@ -134,16 +145,19 @@
                         android:id="@+id/q3_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="0~3"/>
                     <RadioButton
                         android:id="@+id/q3_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="3~6"/>
                     <RadioButton
                         android:id="@+id/q3_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="6~9"/>
                 </RadioGroup>
             </LinearLayout>
@@ -158,6 +172,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:text="Q4:過去一年是否有跌倒的經驗？"/>
                 <RadioGroup
                     android:id="@+id/fall_down"
@@ -168,11 +183,13 @@
                         android:id="@+id/q4_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="是"/>
                     <RadioButton
                         android:id="@+id/q4_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="否"/>
                 </RadioGroup>
             </LinearLayout>
@@ -198,6 +215,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.10"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h95"
         android:layout_width="wrap_content"
