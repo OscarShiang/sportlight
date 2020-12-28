@@ -23,8 +23,8 @@ public class Result extends AppCompatActivity {
         Float BMI = getIntent().getFloatExtra("BMI", -1.0f);
         String rank = getIntent().getStringExtra("result");
 
-        BMIText.setText(BMI.toString());
-        rankText.setText(rank);
+        BMIText.setText("你的BMI值：" + BMI.toString());
+        rankText.setText("健康狀態：" + rank);
     }
 
     private void findObjects() {

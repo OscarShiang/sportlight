@@ -29,7 +29,7 @@ public class SportEvent implements Serializable {
     }
 
     public String toString() {
-        return ("[" + sport + "] " + founder + "\t" + start_at);
+        return ("[" + sport + "]     " + founder + "     " + start_at);
     }
 
     public int getUID() {
