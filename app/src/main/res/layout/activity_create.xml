@@ -53,6 +53,8 @@
             android:id="@+id/place"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
+            android:maxLines="1"
             android:hint="地點"
             android:gravity="center"
             android:layout_margin="20sp"/>

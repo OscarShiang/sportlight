@@ -32,6 +32,10 @@ public class ApiEntry {
         return isLogin;
     }
 
+    public int getUID() {
+        return uID;
+    }
+
     public Boolean createAccount(String user, String passwd) {
 
         StringBuilder response = new StringBuilder();
@@ -313,7 +317,7 @@ public class ApiEntry {
         return "";
     }
 
-    public boolean setCGAResult(int height, int weight, boolean abnormal_weight, int exercise_kind, boolean fall_down) {
+    public boolean setCGAResult(int height, int weight, int score) {
         StringBuilder response = new StringBuilder();
         try {
             URL url = new URL(baseURL + "/cga");
@@ -331,9 +335,7 @@ public class ApiEntry {
             body.put("id", uID);
             body.put("height", height);
             body.put("weight", weight);
-            body.put("abnormal_weight", abnormal_weight);
-            body.put("exercise", exercise_kind);
-            body.put("fall_down", fall_down);
+            body.put("score", score);
 
             writer.write(body.toString());
             writer.flush();
@@ -362,5 +364,42 @@ public class ApiEntry {
             Boolean ret = Boolean.parseBoolean(response.toString());
             return ret;
         }
+    }
+
+    public int getCGAScore(int uID) {
+        StringBuilder response = new StringBuilder();
+        try {
+            URL url = new URL(baseURL + "/cga/" + uID);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+
+            InputStream ipt = conn.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ipt));
+
+            String line;
+            while((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+            reader.close();
+            conn.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONObject res = new JSONObject(response.toString());
+            int ret = res.getInt("score");
+            return ret;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

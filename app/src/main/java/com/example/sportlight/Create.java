@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Create extends AppCompatActivity {
@@ -38,11 +39,39 @@ public class Create extends AppCompatActivity {
         findObjects();
         setClickEvents();
 
-        String[] sports = new String[]{"tennis", "soccer", "basketball"};
-
+        String[][] sports = new String[][] {{"散步", "太極拳"}, {"散步", "太極拳", "健走", "羽球", "桌球", "騎腳踏車"}, {"散步", "太極拳", "健走", "羽球", "桌球", "騎腳踏車", "跑步", "爬山", "游泳"}};
         apiEntry = new ApiEntry();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sports);
+        final int[] score = new int[1];
+
+        Thread action = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                score[0] = apiEntry.getCGAScore(apiEntry.getUID());
+            }
+        });
+
+        action.start();
+        try {
+            action.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        int index = 0;
+        switch(score[0]) {
+            case 0: case 1:
+                index = 2;
+                break;
+            case 2: case 3:
+                index = 1;
+                break;
+            default:
+                index = 0;
+                break;
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sports[index]);
         sportSpin.setAdapter(adapter);
     }
 
@@ -77,7 +106,8 @@ public class Create extends AppCompatActivity {
                 new TimePickerDialog(Create.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        timeEdit.setText(hourOfDay + ":" + minute);
+                        //SimpleDateFormat dataFormat = new SimpleDateFormat("hh/mm");
+                        timeEdit.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), false).show();
             }

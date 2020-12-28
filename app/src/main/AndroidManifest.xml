@@ -12,20 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportlight">
-        <activity android:name=".Create"></activity>
-        <activity android:name=".EventInfo" />
-        <activity
-            android:name=".Menu"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.Sportlight.NoActionBar" />
-        <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.Sportlight.NoActionBar" />
-        <activity android:name=".Result" />
-        <activity android:name=".Register" />
-        <activity android:name=".Question" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Create"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EventInfo"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Menu"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Result"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Register"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Question"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

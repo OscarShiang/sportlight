@@ -22,12 +22,16 @@ public class Question extends AppCompatActivity {
 
     private ApiEntry apiEntry;
 
+    private int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
         apiEntry = new ApiEntry();
+
+        score = 0;
 
         findObjects();
         buttonClickEvent();
@@ -72,37 +76,45 @@ public class Question extends AppCompatActivity {
                 int height = Integer.parseInt(tmp_height);
                 int weight = Integer.parseInt(tmp_weight);
 
-                boolean abnormal;
-                int exercise;
-                boolean fall_down;
 
                 int tmp;
                 tmp = abnoramlRadios.getCheckedRadioButtonId();
                 if (tmp == -1) {
                     Toast.makeText(Question.this, "選填題不可空白", Toast.LENGTH_SHORT).show();
                     return;
-                } else
-                    abnormal = tmp == 1;
-
+                } else {
+                    if(tmp == R.id.q2_yes)
+                        score++;
+                }
                 tmp = exerciseRadios.getCheckedRadioButtonId();
                 if (tmp == -1) {
                     Toast.makeText(Question.this, "選填題不可空白", Toast.LENGTH_SHORT).show();
                     return;
-                } else
-                    exercise = tmp;
-
+                } else {
+                    switch (tmp) {
+                        case(R.id.q3_1):
+                            score += 2;
+                            break;
+                        case(R.id.q3_2):
+                            score += 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 tmp = fallRadios.getCheckedRadioButtonId();
                 if (tmp == -1) {
                     Toast.makeText(Question.this, "選填題不可空白", Toast.LENGTH_SHORT).show();
                     return;
-                } else
-                    fall_down = tmp == 1;
-
+                } else {
+                    if(tmp == R.id.q4_yes)
+                        score++;
+                }
                 final boolean[] ret = new boolean[1];
                 Thread action = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        ret[0] = apiEntry.setCGAResult(height, weight, abnormal, exercise, fall_down);
+                        ret[0] = apiEntry.setCGAResult(height, weight, score);
                     }
                 });
                 action.start();
@@ -118,7 +130,19 @@ public class Question extends AppCompatActivity {
                 }
 
                 // TODO: define the different ranks
-                String result = "良好";
+                String result;
+                switch (score) {
+                    case 0: case 1:
+                        result = "健康";
+                        break;
+                    case 2: case 3:
+                        result = "亞健康";
+                        break;
+                    default:
+                        result = "衰弱";
+                        break;
+                }
+
                 float BMI = (float)weight / (((float) height / 100) * ((float) height / 100));
 
                 Toast.makeText(Question.this, "已儲存填答結果", Toast.LENGTH_SHORT).show();

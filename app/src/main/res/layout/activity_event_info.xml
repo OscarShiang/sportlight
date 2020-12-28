@@ -11,15 +11,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/h05"
         app:layout_constraintBottom_toBottomOf="@id/h15"
-        app:layout_constraintLeft_toLeftOf="@id/v10"
+        app:layout_constraintLeft_toLeftOf="@id/v15"
         app:layout_constraintRight_toRightOf="@id/v30"
         android:text="項目"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/sportText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintTop_toTopOf="@id/h05"
         app:layout_constraintBottom_toBottomOf="@id/h15"
         app:layout_constraintLeft_toLeftOf="@id/v30"
@@ -28,76 +29,80 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h25"
-        app:layout_constraintBottom_toBottomOf="@id/h35"
-        app:layout_constraintLeft_toLeftOf="@id/v10"
+        app:layout_constraintTop_toTopOf="@id/h20"
+        app:layout_constraintBottom_toBottomOf="@id/h30"
+        app:layout_constraintLeft_toLeftOf="@id/v15"
         app:layout_constraintRight_toRightOf="@id/v30"
         android:text="日期"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h25"
-        app:layout_constraintBottom_toBottomOf="@id/h35"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/h20"
+        app:layout_constraintBottom_toBottomOf="@id/h30"
         app:layout_constraintLeft_toLeftOf="@id/v30"
         app:layout_constraintRight_toRightOf="@id/v90"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h45"
-        app:layout_constraintBottom_toBottomOf="@id/h55"
-        app:layout_constraintLeft_toLeftOf="@id/v10"
+        app:layout_constraintTop_toTopOf="@id/h35"
+        app:layout_constraintBottom_toBottomOf="@id/h45"
+        app:layout_constraintLeft_toLeftOf="@id/v15"
         app:layout_constraintRight_toRightOf="@id/v30"
         android:text="時間"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h45"
-        app:layout_constraintBottom_toBottomOf="@id/h55"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/h35"
+        app:layout_constraintBottom_toBottomOf="@id/h45"
         app:layout_constraintLeft_toLeftOf="@id/v30"
         app:layout_constraintRight_toRightOf="@id/v90"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h65"
-        app:layout_constraintBottom_toBottomOf="@id/h75"
-        app:layout_constraintLeft_toLeftOf="@id/v10"
+        app:layout_constraintTop_toTopOf="@id/h50"
+        app:layout_constraintBottom_toBottomOf="@id/h60"
+        app:layout_constraintLeft_toLeftOf="@id/v15"
         app:layout_constraintRight_toRightOf="@id/v30"
         android:text="地點"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/locText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h65"
-        app:layout_constraintBottom_toBottomOf="@id/h75"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/h50"
+        app:layout_constraintBottom_toBottomOf="@id/h60"
         app:layout_constraintLeft_toLeftOf="@id/v30"
         app:layout_constraintRight_toRightOf="@id/v90"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h85"
-        app:layout_constraintBottom_toBottomOf="@id/h95"
-        app:layout_constraintLeft_toLeftOf="@id/v10"
+        app:layout_constraintTop_toTopOf="@id/h65"
+        app:layout_constraintBottom_toBottomOf="@id/h75"
+        app:layout_constraintLeft_toLeftOf="@id/v15"
         app:layout_constraintRight_toRightOf="@id/v30"
         android:text="成員"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/partiText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/h85"
-        app:layout_constraintBottom_toBottomOf="@id/h95"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/h65"
+        app:layout_constraintBottom_toBottomOf="@id/h75"
         app:layout_constraintLeft_toLeftOf="@id/v30"
         app:layout_constraintRight_toRightOf="@id/v90"/>
 
@@ -134,11 +139,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h25"
+        android:id="@+id/h20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.20"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h35"
         android:layout_width="wrap_content"
@@ -152,11 +163,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h55"
+        android:id="@+id/h50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55"/>
+        app:layout_constraintGuide_percent="0.50"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h65"
         android:layout_width="wrap_content"
@@ -170,35 +187,23 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h85"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85"/>
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h95"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.10"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.30"/>
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.15"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v85"
         android:layout_width="wrap_content"
