@@ -4,17 +4,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 public class Question extends AppCompatActivity {
 
     private TextView heightText, weightText;
     private Button send;
+    private ImageView speaker1, speaker2, speaker3, speaker4;
 
     private RadioGroup abnoramlRadios;
     private RadioGroup exerciseRadios;
@@ -23,6 +28,8 @@ public class Question extends AppCompatActivity {
     private ApiEntry apiEntry;
 
     private int score;
+
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,11 @@ public class Question extends AppCompatActivity {
 
         send = findViewById(R.id.sendButton);
 
+        speaker1 = findViewById(R.id.speaker1);
+        speaker2 = findViewById(R.id.speaker2);
+        speaker3 = findViewById(R.id.speaker3);
+        speaker4 = findViewById(R.id.speaker4);
+
         abnoramlRadios = findViewById(R.id.abnormal_weight);
         exerciseRadios = findViewById(R.id.exercise_kind);
         fallRadios = findViewById(R.id.fall_down);
@@ -62,6 +74,62 @@ public class Question extends AppCompatActivity {
     }
 
     public void buttonClickEvent() {
+        speaker1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer = MediaPlayer.create(Question.this, R.raw.q1);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
+        speaker2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer = MediaPlayer.create(Question.this, R.raw.q2);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
+        speaker3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer = MediaPlayer.create(Question.this, R.raw.q3);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
+        speaker4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer = MediaPlayer.create(Question.this, R.raw.q4);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        mediaPlayer.release();
+                    }
+                });
+            }
+        });
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

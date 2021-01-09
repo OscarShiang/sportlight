@@ -34,15 +34,27 @@
             <LinearLayout
                 android:id="@+id/question1"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Q1:請輸入你的身高和體重。"/>
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/speaker1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/volume"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="155dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" Q1:請輸入你的身高和體重。"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -95,15 +107,27 @@
             <LinearLayout
                 android:id="@+id/question2"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Q2:過去一年體重是否有不正常減輕(> 3 kg)的情形？"/>
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/speaker2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/volume"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="155dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" Q2:過去一年內體重是否有不正常減輕(> 3 kg)的情形？"/>
+                </LinearLayout>
                 <RadioGroup
                     android:id="@+id/abnormal_weight"
                     android:layout_width="wrap_content"
@@ -127,18 +151,30 @@
             <LinearLayout
                 android:id="@+id/question3"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Q3:每周的運動時數？"/>
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/speaker3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/volume"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="155dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" Q3:請選擇你每週的運動時數？"/>
+                </LinearLayout>
                 <RadioGroup
                     android:id="@+id/exercise_kind"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <RadioButton
@@ -169,14 +205,26 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Q4:過去一年是否有跌倒的經驗？"/>
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/speaker4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/volume"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="155dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" Q4:過去一年內是否有跌倒的經驗？"/>
+                </LinearLayout>
                 <RadioGroup
                     android:id="@+id/fall_down"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <RadioButton
