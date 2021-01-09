@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity {
                 password = pwdEdit.getText().toString();
 
                 if (username.equals("") || password.equals("")) {
-                    Toast.makeText(Register.this, "Please enter the username and password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "請輸入帳號和密碼", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

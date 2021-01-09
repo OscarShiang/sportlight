@@ -130,6 +130,7 @@ public class Question extends AppCompatActivity {
                 });
             }
         });
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

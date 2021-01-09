@@ -105,9 +105,9 @@ public class EventInfo extends AppCompatActivity {
 
                 if (ret[0]) {
                     finish();
-                    Toast.makeText(EventInfo.this, "Operation completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EventInfo.this, "加入成功！", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(EventInfo.this, "Operation failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EventInfo.this, "加入失敗", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -2,10 +2,11 @@ package com.example.sportlight;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,13 +19,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends AppCompatActivity {
 
     private ImageView add, reload;
     private Button back;
     private ListView sportList;
-    private ArrayList<SportEvent> events;
+    private ArrayList<SportEvent> events; // old
+
+    private RecyclerView recyclerView;
+    private Adapter newAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private ArrayList<SportEvent> sportEventList; // new
 
     private ApiEntry apiEntry;
 
@@ -38,8 +45,12 @@ public class Menu extends AppCompatActivity {
         findObjects();
         clickEvent();
 
+        sportList.setVisibility(View.INVISIBLE);
+
         events = new ArrayList<SportEvent>();
+        sportEventList = new ArrayList<SportEvent>();
         updateEvents();
+        buildRecyclerView();
     }
 
     private void updateEvents() {
@@ -58,11 +69,13 @@ public class Menu extends AppCompatActivity {
         }
 
         events.clear();
+        sportEventList.clear();
         for (int i = 0; i < array[0].length(); i++) {
             try {
                 JSONObject data = (JSONObject) array[0].get(i);
                 SportEvent element = new SportEvent((JSONObject) array[0].get(i));
                 events.add(element);
+                sportEventList.add(element);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -70,6 +83,8 @@ public class Menu extends AppCompatActivity {
 
         ArrayAdapter adapter = new ArrayAdapter(Menu.this, android.R.layout.simple_list_item_1, events);
         sportList.setAdapter(adapter);
+
+        newAdapter = new Adapter(sportEventList);
     }
 
     public void findObjects() {
@@ -78,6 +93,8 @@ public class Menu extends AppCompatActivity {
         back = findViewById(R.id.backButton);
 
         sportList = findViewById(R.id.sportList);
+
+        recyclerView = findViewById(R.id.recyclerView);
     }
 
     @Override
@@ -108,6 +125,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateEvents();
+                buildRecyclerView();
             }
         });
 
@@ -128,4 +146,14 @@ public class Menu extends AppCompatActivity {
             }
         });
     }
+
+    public void buildRecyclerView() {
+        recyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        newAdapter = new Adapter(sportEventList);
+
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(newAdapter);
+    }
+
 }

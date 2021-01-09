@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (user.equals("") || passwd.equals("")) {
                     pwdEdit.setText("");
-                    Toast.makeText(MainActivity.this, "Please enter the user and password fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "請輸入完整資訊", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

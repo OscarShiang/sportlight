@@ -52,13 +52,15 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:text="Login"
+            android:text="登入"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_width="180dp" />
 
         <Button
             android:id="@+id/registerButton"
-            android:text="Register"
+            android:text="註冊"
+            android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="180dp" />
@@ -115,8 +117,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:gravity="center"
-                android:textSize="20dp"
-                android:hint="Username" />
+                android:textSize="25sp"
+                android:hint="帳號" />
 
         </LinearLayout>
 
@@ -138,8 +140,8 @@
                 android:inputType="textPassword"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="20dp"
-                android:hint="Password" />
+                android:textSize="25sp"
+                android:hint="密碼" />
         </LinearLayout>
 
     </LinearLayout>
