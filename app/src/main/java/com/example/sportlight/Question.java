@@ -198,7 +198,6 @@ public class Question extends AppCompatActivity {
                     return;
                 }
 
-                // TODO: define the different ranks
                 String result;
                 switch (score) {
                     case 0: case 1:
