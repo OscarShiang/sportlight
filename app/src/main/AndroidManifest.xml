@@ -12,20 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportlight">
-        <activity android:name=".Create"
+        <activity
+            android:name=".Create"
             android:screenOrientation="portrait" />
-        <activity android:name=".EventInfo"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Menu"
+        <activity
+            android:name=".EventInfo"
             android:screenOrientation="portrait" />
-        <activity android:name=".Result"
+        <activity
+            android:name=".Menu"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sportlight.NoActionBar"/>
+        <activity
+            android:name=".Result"
             android:screenOrientation="portrait" />
-        <activity android:name=".Register"
+        <activity
+            android:name=".Register"
             android:screenOrientation="portrait" />
-        <activity android:name=".Question"
+        <activity
+            android:name=".Question"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait" >
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

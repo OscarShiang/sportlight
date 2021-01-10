@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Toolbar"
+
+    android:id="@+id/toolbar"
+    android:minHeight="?actionBarSize"
+    android:background="@color/design_default_color_primary"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:navigationIcon="?actionModeCloseDrawable"
+    app:title="活動列表"
+    app:titleTextColor="@color/white">
+
+    <ImageView
+        android:id="@+id/addbtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/add"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp" />
+
+    <ImageView
+        android:id="@+id/reloadbtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/reload"/>
+
+</androidx.appcompat.widget.Toolbar>
