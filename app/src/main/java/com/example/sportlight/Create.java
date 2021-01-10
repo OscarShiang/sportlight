@@ -119,8 +119,9 @@ public class Create extends AppCompatActivity {
                 String sport = sportSpin.getSelectedItem().toString();
                 String date = dateEdit.getText().toString();
                 String time = timeEdit.getText().toString();
+                String pos = placeEdit.getText().toString();
 
-                if (date.equals("") || time.equals("")) {
+                if (date.equals("") || time.equals("") || pos.equals("")) {
                     Toast.makeText(Create.this, "Please set date and time segments", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -131,7 +132,7 @@ public class Create extends AppCompatActivity {
                 Thread action = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        ret[0] = apiEntry.createEvent(sport, date + " " + time);
+                        ret[0] = apiEntry.createEvent(sport, date + " " + time, pos);
                     }
                 });
                 action.start();

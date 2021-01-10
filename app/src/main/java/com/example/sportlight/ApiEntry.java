@@ -193,7 +193,7 @@ public class ApiEntry {
         return new JSONArray();
     }
 
-    public Boolean createEvent(String sport, String start_at) {
+    public Boolean createEvent(String sport, String start_at, String pos) {
         StringBuilder response = new StringBuilder();
         try {
             URL url = new URL(baseURL + "/event");
@@ -211,6 +211,7 @@ public class ApiEntry {
             body.put("founder", username);
             body.put("sport", sport);
             body.put("start_at", start_at);
+            body.put("pos", pos);
 
             writer.write(body.toString());
             writer.flush();
