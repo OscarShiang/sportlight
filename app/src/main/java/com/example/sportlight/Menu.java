@@ -43,7 +43,6 @@ public class Menu extends AppCompatActivity {
         apiEntry = new ApiEntry();
 
         findObjects();
-        clickEvent();
 
         sportList.setVisibility(View.INVISIBLE);
 
@@ -51,6 +50,8 @@ public class Menu extends AppCompatActivity {
         sportEventList = new ArrayList<SportEvent>();
         updateEvents();
         buildRecyclerView();
+
+        clickEvent();
     }
 
     private void updateEvents() {
@@ -142,6 +143,16 @@ public class Menu extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Menu.this, EventInfo.class);
                 intent.putExtra("info", events.get(position));
+                startActivityForResult(intent, 8081);
+            }
+        });
+
+        newAdapter.setItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent intent = new Intent();
+                intent.setClass(Menu.this, EventInfo.class);
+                intent.putExtra("info", events.get(pos));
                 startActivityForResult(intent, 8081);
             }
         });

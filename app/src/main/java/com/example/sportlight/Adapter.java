@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +15,18 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> {
     private final List<SportEvent> sportList;
 
+    public interface OnItemClickListener {
+        void onItemClick(View v, int pos);
+    }
+
+    private OnItemClickListener itemClickListener = null;
+
     public Adapter(List<SportEvent> sport) {
         this.sportList = sport;
+    }
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     public static class viewHolder extends RecyclerView.ViewHolder {
@@ -73,16 +84,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(v.getContext(), EventInfo.class);
-                intent.putExtra("info", sportList.get(position));
-                startActivityForResult(intent, 8081);
+                itemClickListener.onItemClick(holder.itemView, position);
             }
         });
-    }
-
-    private void startActivityForResult(Intent intent, int i) {
-
     }
 
     @Override
