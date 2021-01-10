@@ -39,7 +39,7 @@ public class Create extends AppCompatActivity {
         findObjects();
         setClickEvents();
 
-        String[][] sports = new String[][] {{"散步", "太極拳"}, {"散步", "太極拳", "健走", "羽球", "桌球", "騎腳踏車"}, {"散步", "太極拳", "健走", "羽球", "桌球", "騎腳踏車", "跑步", "爬山", "游泳"}};
+        String[][] sports = new String[][] {{"健走", "太極拳"}, {"健走", "太極拳", "羽球", "桌球", "騎腳踏車"}, {"健走", "太極拳", "羽球", "桌球", "騎腳踏車", "跑步", "爬山", "游泳"}};
         apiEntry = new ApiEntry();
 
         final int[] score = new int[1];

@@ -25,11 +25,9 @@ public class Menu extends AppCompatActivity {
 
     private ImageView add, reload;
     private Button back;
-    private ListView sportList;
-    private ArrayList<SportEvent> events; // old
 
     private RecyclerView recyclerView;
-    private Adapter newAdapter;
+    private Adapter adapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<SportEvent> sportEventList; // new
 
@@ -44,14 +42,13 @@ public class Menu extends AppCompatActivity {
 
         findObjects();
 
-        sportList.setVisibility(View.INVISIBLE);
-
-        events = new ArrayList<SportEvent>();
         sportEventList = new ArrayList<SportEvent>();
         updateEvents();
         buildRecyclerView();
-
+        updateEvents();
+        buildRecyclerView();
         clickEvent();
+
     }
 
     private void updateEvents() {
@@ -69,31 +66,24 @@ public class Menu extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        events.clear();
         sportEventList.clear();
         for (int i = 0; i < array[0].length(); i++) {
             try {
                 JSONObject data = (JSONObject) array[0].get(i);
                 SportEvent element = new SportEvent((JSONObject) array[0].get(i));
-                events.add(element);
                 sportEventList.add(element);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-        ArrayAdapter adapter = new ArrayAdapter(Menu.this, android.R.layout.simple_list_item_1, events);
-        sportList.setAdapter(adapter);
-
-        newAdapter = new Adapter(sportEventList);
+        adapter = new Adapter(sportEventList);
     }
 
     public void findObjects() {
         add = findViewById(R.id.add);
         reload = findViewById(R.id.reload);
         back = findViewById(R.id.backButton);
-
-        sportList = findViewById(R.id.sportList);
 
         recyclerView = findViewById(R.id.recyclerView);
     }
@@ -107,6 +97,7 @@ public class Menu extends AppCompatActivity {
             case 8081:
                 if (resultCode == RESULT_OK) {
                     updateEvents();
+                    buildRecyclerView();
                 }
                 break;
         }
@@ -137,34 +128,25 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        sportList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
-                intent.setClass(Menu.this, EventInfo.class);
-                intent.putExtra("info", events.get(position));
-                startActivityForResult(intent, 8081);
-            }
-        });
-
-        newAdapter.setItemClickListener(new Adapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
-                Intent intent = new Intent();
-                intent.setClass(Menu.this, EventInfo.class);
-                intent.putExtra("info", events.get(pos));
-                startActivityForResult(intent, 8081);
-            }
-        });
     }
 
     public void buildRecyclerView() {
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        newAdapter = new Adapter(sportEventList);
+        adapter = new Adapter(sportEventList);
 
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(newAdapter);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent intent = new Intent();
+                intent.setClass(Menu.this, EventInfo.class);
+                intent.putExtra("info", sportEventList.get(pos));
+                startActivityForResult(intent, 8081);
+            }
+        });
     }
 
 }
