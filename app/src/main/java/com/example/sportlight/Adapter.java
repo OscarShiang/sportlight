@@ -32,12 +32,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> {
     public static class viewHolder extends RecyclerView.ViewHolder {
         public TextView sport, time;
         public ImageView icon;
+        public TextView location;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             sport = itemView.findViewById(R.id.sport);
             time = itemView.findViewById(R.id.time);
             icon = itemView.findViewById(R.id.icon);
+            location = itemView.findViewById(R.id.location);
         }
     }
 
@@ -54,7 +56,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.viewHolder> {
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         SportEvent sport = sportList.get(position);
         holder.sport.setText(sport.getSport());
-        holder.time.setText(sport.getStartAt() + "\n" + sport.getFounder());
+        holder.time.setText(sport.getStartAt());
+        holder.location.setText(sport.getPosition());
         switch(sport.getSport()) {
             case "游泳":
                 holder.icon.setImageResource(R.drawable.swimming);

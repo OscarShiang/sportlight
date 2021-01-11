@@ -39,16 +39,13 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         apiEntry = new ApiEntry();
-
         findObjects();
 
         sportEventList = new ArrayList<SportEvent>();
         updateEvents();
-        buildRecyclerView();
-        updateEvents();
+
         buildRecyclerView();
         clickEvent();
-
     }
 
     private void updateEvents() {
@@ -69,7 +66,6 @@ public class Menu extends AppCompatActivity {
         sportEventList.clear();
         for (int i = 0; i < array[0].length(); i++) {
             try {
-                JSONObject data = (JSONObject) array[0].get(i);
                 SportEvent element = new SportEvent((JSONObject) array[0].get(i));
                 sportEventList.add(element);
             } catch (JSONException e) {

@@ -14,7 +14,7 @@ public class EventInfo extends AppCompatActivity {
     private ApiEntry apiEntry;
 
     private Button backBtn, joinBtn;
-    private TextView sport, date, time, participants;
+    private TextView sport, date, time, participants, location;
 
     private SportEvent info;
 
@@ -37,6 +37,7 @@ public class EventInfo extends AppCompatActivity {
         date = findViewById(R.id.dateText);
         time = findViewById(R.id.timeText);
         participants = findViewById(R.id.partiText);
+        location = findViewById(R.id.locText);
 
         backBtn = findViewById(R.id.backButton);
         joinBtn = findViewById(R.id.joinButton);
@@ -48,6 +49,8 @@ public class EventInfo extends AppCompatActivity {
 
         date.setText(start_at[0]);
         time.setText(start_at[1]);
+
+        location.setText(info.getPosition());
 
         final String[] partiShowText = new String[1];
         partiShowText[0] = "";
@@ -104,6 +107,7 @@ public class EventInfo extends AppCompatActivity {
                 }
 
                 if (ret[0]) {
+                    setResult(RESULT_OK);
                     finish();
                     Toast.makeText(EventInfo.this, "加入成功！", Toast.LENGTH_SHORT).show();
                 } else {
