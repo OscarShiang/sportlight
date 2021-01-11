@@ -15,6 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.List;
 
 public class EventInfo extends AppCompatActivity {
@@ -100,33 +104,14 @@ public class EventInfo extends AppCompatActivity {
         });
 
         shareBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                PackageManager pm = getPackageManager();
-                List<ApplicationInfo>  appList =  pm.getInstalledApplications(0);
-                boolean find = false;
-                for(ApplicationInfo app: appList ) {
-                    Log.i("info", "app:" + app);
-                    if (app.packageName.equals(PACKAGE_NAME)) {
-                        find = true;
-                        break;
-                    }
-                }
-                if(find) {
-                    Intent intent = pm.getLeanbackLaunchIntentForPackage(PACKAGE_NAME);
-                    if(intent == null)
-                        Log.i("QQ", "QQ");
-                    else {
-                        //intent.setClassName(PACKAGE_NAME, CLASS_NAME);
-                        intent.setType("text/plain");
-                        String text = sport.getText().toString();
-                        intent.putExtra(Intent.EXTRA_TEXT, text);
-                        startActivity(intent);
-                    }
-                }
-                else {
-                    Toast.makeText(EventInfo.this, "請先安裝Line再使用分享功能", Toast.LENGTH_LONG).show();
+                try {
+                    String uri = "https://line.me/R/msg/text/?" + URLEncoder.encode("快來參加我在 Sportlight 上舉辦的活動吧！", "utf-8");
+                    Intent intent = Intent.parseUri(uri, Intent.URI_INTENT_SCHEME);
+                    startActivity(intent);
+                } catch (UnsupportedEncodingException | URISyntaxException e) {
+                    e.printStackTrace();
                 }
             }
         });
