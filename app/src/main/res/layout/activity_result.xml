@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="@id/h20"
-        app:layout_constraintBottom_toBottomOf="@id/h95"
+        app:layout_constraintBottom_toBottomOf="@id/h90"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
         <TextView
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="返回首頁"
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="@id/h95"
+        app:layout_constraintTop_toTopOf="@id/h90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -58,10 +58,10 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.20"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h95"
+        android:id="@+id/h90"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95"/>
+        app:layout_constraintGuide_percent="0.90"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

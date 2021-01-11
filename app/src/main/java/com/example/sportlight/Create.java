@@ -122,7 +122,7 @@ public class Create extends AppCompatActivity {
                 String pos = placeEdit.getText().toString();
 
                 if (date.equals("") || time.equals("") || pos.equals("")) {
-                    Toast.makeText(Create.this, "Please set date and time segments", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Create.this, "請輸入完整資訊", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

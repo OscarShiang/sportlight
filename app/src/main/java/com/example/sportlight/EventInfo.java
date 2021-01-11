@@ -1,23 +1,32 @@
 package com.example.sportlight;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class EventInfo extends AppCompatActivity {
 
     private ApiEntry apiEntry;
 
-    private Button backBtn, joinBtn;
+    private Button backBtn, joinBtn, shareBtn;
     private TextView sport, date, time, participants, location;
-
     private SportEvent info;
 
+    public static final String PACKAGE_NAME = "jp.naver.line.android";
+    public static final String CLASS_NAME = "jp.naver.line.android.activity.selectchat.SelectChatActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +50,7 @@ public class EventInfo extends AppCompatActivity {
 
         backBtn = findViewById(R.id.backButton);
         joinBtn = findViewById(R.id.joinButton);
+        shareBtn = findViewById(R.id.shareButton);
     }
 
     private void setInit() {
@@ -86,6 +96,38 @@ public class EventInfo extends AppCompatActivity {
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
                 finish();
+            }
+        });
+
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                PackageManager pm = getPackageManager();
+                List<ApplicationInfo>  appList =  pm.getInstalledApplications(0);
+                boolean find = false;
+                for(ApplicationInfo app: appList ) {
+                    Log.i("info", "app:" + app);
+                    if (app.packageName.equals(PACKAGE_NAME)) {
+                        find = true;
+                        break;
+                    }
+                }
+                if(find) {
+                    Intent intent = pm.getLeanbackLaunchIntentForPackage(PACKAGE_NAME);
+                    if(intent == null)
+                        Log.i("QQ", "QQ");
+                    else {
+                        //intent.setClassName(PACKAGE_NAME, CLASS_NAME);
+                        intent.setType("text/plain");
+                        String text = sport.getText().toString();
+                        intent.putExtra(Intent.EXTRA_TEXT, text);
+                        startActivity(intent);
+                    }
+                }
+                else {
+                    Toast.makeText(EventInfo.this, "請先安裝Line再使用分享功能", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
